@@ -1,0 +1,96 @@
+﻿@model ProjetoFinalCurso.Data.Entities.Ticket
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<section class="footer-first-section">
+    <div class="login" @*class="container"*@ style="position:center">
+
+
+        <div class="box-wrap">
+            <header>
+                <h1>Ticket Details</h1>
+            </header>
+
+
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+
+<div>
+
+    <div class="row">
+        <div class="col-md-8" style="font-size: 1.6rem;">
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Code)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Code)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Concerto.Title)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Concerto.Title)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Type.Name)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Type.Name)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Stock)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Stock)
+                </dd>
+
+            </dl>
+        </div>
+       
+    </div>
+</div>
+
+
+
+<section class="footer-first-section">
+    <div class="login" @*class="container"*@ style="position:center">
+
+
+        <section class="quick-contact">
+            <div class="box-wrap">
+
+                @if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Admin") || this.User.IsInRole("Employee"))
+                {
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn-login">Edit</a>
+                }
+
+                <a asp-action="Index" class="btn-login">Back to List</a>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</section>
+
+

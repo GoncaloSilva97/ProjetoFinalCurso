@@ -1,0 +1,117 @@
+﻿@model ProjetoFinalCurso.Data.Entities.Concert
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<section class="footer-first-section">
+    <div class="login" @*class="container"*@ style="position:center">
+
+
+        <div class="box-wrap">
+            <header>
+                <h1>Concert Details</h1>
+
+            </header>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+
+<div>
+
+    <div class="row">
+        <div class="col-md-8" style="font-size: 1.6rem;">
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Day)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Day)
+                </dd>
+
+            </dl>
+        </div>
+        <div class="col-md-4">
+            <img src="@Url.Content(Model.ImageFullPath)" alt="Image" style="width:300px;height:450px;max-width:100%;height:auto;" />
+        </div>
+    </div>
+</div>
+
+
+
+<section class="footer-first-section">
+    <div class="login" @*class="container"*@ style="position:center">
+
+
+        <section class="quick-contact">
+            <div class="box-wrap">
+               
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn-login">Edit</a>
+                <a asp-action="AddBand" asp-route-id="@Model.Id" class="btn-login">Add Band</a>
+                <a asp-action="Index" class="btn-login">Back to List</a>
+            </div>
+
+        </section>
+
+    </div>
+
+</section>
+
+
+
+
+<h4>Bands</h4>
+@if (Model.Bands == null || Model.Bands.Count == 0)
+{
+    <h5>No Bands added yet</h5>
+}
+else
+{
+    <table class="table" style="font-size: 1.6rem;">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Bands.FirstOrDefault().Name)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Bands.OrderBy(c => c.Name))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+
+                    <td id="@item.Id">
+                        @*<a asp-action="EditCity" asp-route-id="@item.Id" class="btn-login">Edit</a>*@
+                       
+                        <a asp-action="RemoveBand" asp-route-id="@item.Id" class="btn-login " style="color:whitesmoke" id="btnDelete">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

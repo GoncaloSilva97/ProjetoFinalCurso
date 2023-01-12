@@ -1,0 +1,150 @@
+﻿@model IEnumerable<ProjetoFinalCurso.Data.Entities.Band>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css" />
+
+
+<br />
+
+<p>
+
+
+    @if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Admin"))
+    {
+        <a asp-action="Create" class="btn-create">Create New Band</a>
+    }
+</p>
+<html>
+    <body>
+
+        <section class="page-heading">
+            <div class="container">
+            <h2 style="	color:black">Bands</h2>
+            </div>
+        </section>
+        
+        <section class="learn-courses">
+			<div class="container">
+				<div class="courses">
+					<div class="owl-one owl-carousel">
+
+
+					    @foreach (var item in Model)
+					    {
+
+                            <div class="box-wrap"   itemprop="event" itemscope itemtype=" http://schema.org/Course">
+                            <div class="img-wrap" itemprop="image"><img src="@Url.Content(item.ImageFullPath)" style="width:394px;height:262px"  alt="courses picture"></div>
+							   
+							    <div class="box-body" itemprop="description">
+
+
+
+                                    <h4><a asp-action="Details" asp-route-id="@item.Id" class="article-subtitle" itemprop="name">@Html.DisplayFor(modelItem => item.Name)</a></h4>
+                    
+								    <p>@Html.DisplayFor(modelItem => item.Description)</p>
+								    <section itemprop="time">
+                                       
+									    <p><span>Genre:</span> @Html.DisplayFor(modelItem => item.Genre)</p>
+                                        @if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Admin"))
+                                        {
+                                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><i class="far fa-edit"></i></a>
+                                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                        
+                                        }
+                                        <a href="@Html.DisplayFor(modelItem => item.Links)" class="btn btn-info"><i class="fa-solid fa-link"></i></a>
+                                    </section>
+							    </div>
+						    </div>
+
+						}
+
+
+
+                   
+
+
+
+
+
+
+
+                      
+
+
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+
+
+
+        <section class="page-heading">
+		    <div class="container">
+            <h2>List of Bands</h2>
+		    </div>
+	    </section>
+        <section class="course-listing-page">
+            <div class="container">
+
+
+                <div class="grid" id="cGrid">
+                    @foreach (var item in Model)
+                    {
+                        <div class="grid-item">
+                            <div class="img-wrap">
+                                <img src="@Url.Content(item.ImageFullPath)" alt="courses picture" style="height: 246px; width: 370px;">
+                            </div>             
+                            <div class="box-body">
+                                <section style ="height: 246px; ">
+
+                                    <a class="bands-list " asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+
+                                    <p style="margin-block-start: 1em; margin-block-end: 1.5em;">@Html.DisplayFor(modelItem => item.Description)</p>
+                                    <p><span>Genre:</span> @Html.DisplayFor(modelItem => item.Genre)</p>
+
+                                    @if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Admin"))
+                                    {
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><i class="far fa-edit"></i></a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                    }
+                                    <a href="@Html.DisplayFor(modelItem => item.Links)" class="btn btn-info"><i class="fa-solid fa-link"></i></a>
+                                </section>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <script type="text/javascript" src="~/lib/bootstrap/dist/js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="~/lib/bootstrap/dist/js/lightbox.js"></script>
+        <script type="text/javascript" src="~/lib/bootstrap/dist/js/all.js"></script>
+        <script type="text/javascript" src="~/lib/bootstrap/dist/js/isotope.pkgd.min.js"></script>
+        <script type="text/javascript" src="~/lib/bootstrap/dist/js/owl.carousel.js"></script>
+        <script type="text/javascript" src="~/lib/bootstrap/dist/js/jquery.flexslider.js"></script>
+        <script type="text/javascript" src="~/lib/bootstrap/dist/js/jquery.rateyo.js"></script>
+        <script type="text/javascript" src="~/lib/bootstrap/dist/js/custom.js"></script>
+    </body>
+</html>
+
+
+
+@section Scripts{
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#MyTable').DataTable();
+        });
+    </script>
+}

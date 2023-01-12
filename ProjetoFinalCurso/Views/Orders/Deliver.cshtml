@@ -1,0 +1,105 @@
+﻿@model ProjetoFinalCurso.Data.Entities.Order
+
+@{
+    ViewData["Title"] = "Deliver";
+}
+
+<section class="footer-first-section">
+    <div class="login" @*class="container"*@ style="position:center">
+
+
+        <div class="box-wrap">
+            <header>
+                <h1>Deliver Order</h1>
+            </header>
+
+
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+
+<div>
+
+    <div class="row">
+        <div class="col-md-8" style="font-size: 1.6rem;">
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.OrderDate)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.OrderDate)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Lines)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Lines)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Value)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Value)
+                </dd>
+                
+            </dl>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<section class="footer-first-section">
+    <div class="login" @*class="container"*@ style="position:center">
+
+
+        <section class="quick-contact">
+            <div class="box-wrap">
+                
+
+
+                <input type="submit" value="Deliver Tickets" class="btn-login" />
+                <p></p>
+                <a asp-action="Index" class="btn-login">Back to List</a>
+
+
+
+            </div>
+
+        </section>
+
+    </div>
+
+</section>
+
+
+<div class="text-success">
+    <p>
+        @ViewBag.Message
+    </p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProjetoFinalCurso</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-datepicker/css/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:500,800" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" />
+
+
+
+
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/all.css">
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/css/all.min.css">
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/lightbox.css">
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/flexslider.css">
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/owl.carousel.css">
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/owl.theme.default.css">
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/jquery.rateyo.css" />
+
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/inner-page-style.css">
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet">
+
+
+
+
+
+
+</head>
+<body>
+	<section>
+
+		<div id="page" class="site" itemscope itemtype="http://schema.org/LocalBusiness">
+			<header class="site-header">
+				<div class="top-header">
+					<div class="container">
+						<div class="top-header-left">
+						
+								<li class="nav-item">
+									<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+								</li>
+
+								<li class="nav-item">
+									<a class="nav-link" asp-area="" asp-controller="Establishments" asp-action="Index">Establishments</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" asp-area="" asp-controller="Bands" asp-action="Index">Bands</a>
+								</li>
+								@if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Admin"))
+								{
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+										<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+											<li><a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Register">Create New User</a></li>
+
+											<li><a class="dropdown-item" asp-area="" asp-controller="" asp-action="">Roles</a></li>
+										<li><a class="dropdown-item" asp-area="" asp-controller="Countries" asp-action="Index">Countries and Cities</a></li>
+										</ul>
+									</li>
+								}
+								<li class="nav-item">
+									<a class="nav-link" asp-area="" asp-controller="Concerts" asp-action="Index">Concerts</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+								</li>
+						
+						</div>
+						<div class="top-header-right">
+
+
+							<div class="login-block">
+								<ul>
+									<li class="nav-item">
+										<a class="nav-link" asp-area="" asp-controller="Orders" asp-action="Index">Tickets</a>
+									</li>
+									@if (this.User.Identity.IsAuthenticated)
+									{
+
+										<li class="nav-item">
+											<a class="nav-link" asp-area="" asp-controller="Account" asp-action="ChangeUser">@this.User.Identity.Name</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+										</li>
+									}
+									else
+									{
+										<li class="nav-item">
+											<a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+										</li>
+									}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+		
+			</header>
+		</div>
+
+
+
+
+
+
+    
+		<div class="container">
+			<main role="main" class="pb-3">
+				@RenderBody()
+			</main>
+		</div>
+
+
+	</section>
+
+
+	
+
+
+	<footer class="page-footer" itemprop="footer" itemscope itemtype="http://schema.org/WPFooter">
+		<div class="footer-last-section">
+			<div class="container">
+				<p>Copyright 2018 &copy; educationpro.com <span> | </span> Theme designed and developed by <a href="https://labtheme.com">Lab Theme</a></p>
+			</div>
+		</div>
+	</footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

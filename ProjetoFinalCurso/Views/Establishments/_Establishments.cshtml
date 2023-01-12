@@ -1,0 +1,38 @@
+﻿@model ProjetoFinalCurso.Models.EstablishmentViewModel
+
+<div class="form-group">
+    <label asp-for="Name" class="control-label" style="font-size: 1.6rem;"></label>
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Adress" class="control-label" style="font-size: 1.6rem;"></label>
+    <input asp-for="Adress" class="form-control" />
+    <span asp-validation-for="Adress" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="City" class="control-label" style="font-size: 1.6rem;"></label>
+    <input asp-for="City" class="form-control" />
+    <span asp-validation-for="City" class="text-danger"></span>
+</div>
+@if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Admin"))
+{
+    <div class="form-group">
+        <label asp-for="UserId" class="control-label" style="font-size: 1.6rem; "></label>
+        <select asp-for="UserId"  asp-items="Model.ListUsers" class="form-control footer-first-section" style=" color: white; background-color: black; font-size: 1.4rem;border: 1px solid #fff;border-radius: 5px"></select>
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div>
+}
+
+
+
+
+
+
+
+
+<div class="form-group">
+    <label asp-for="ImageFile" class="control-label" style="font-size: 1.6rem;"></label>
+    <input asp-for="ImageFile" class="form-control-image" type="file" />
+    <span asp-validation-for="ImageFile" class="text-danger"></span>
+</div>

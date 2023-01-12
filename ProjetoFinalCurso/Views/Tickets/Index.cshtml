@@ -1,0 +1,135 @@
+﻿@model IEnumerable<ProjetoFinalCurso.Data.Entities.Ticket>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css" />
+
+
+<br />
+
+<p>
+
+
+    @if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Admin") || this.User.IsInRole("Employee"))
+    {
+        <a asp-action="Create" class="btn-create">Create New Ticket</a>
+    }
+</p>
+<br />
+<br />
+
+
+
+<html>
+
+    <body>
+        <section class="page-heading">
+            <div class="container">
+            <h2 style="	color:black">Ticket Prices </h2>
+            </div>
+        </section>
+
+        <section class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    
+                    <div class="panel-body" style="font-size:1.6rem; color:whitesmoke">
+                        <table class="table table-hover table-responsive table-striped" id="MyTable" style="font-size:1.6rem; color:whitesmoke">
+                            <thead>
+                                <tr>
+                                    <th style="color: #12a84e;">
+                                        @Html.DisplayNameFor(model => model.Code)
+                                    </th>
+                                    <th style="color: #12a84e;">
+                                        @Html.DisplayNameFor(model => model.Concerto.Title)
+                                    </th>
+                                    <th style="color: #12a84e;">
+                                        @Html.DisplayNameFor(model => model.Type.Name)
+                                    </th>
+                                    <th style="color: #12a84e;">
+                                        @Html.DisplayNameFor(model => model.Price)
+                                    </th>
+                                    <th style="color: #12a84e;">
+                                        @Html.DisplayNameFor(model => model.Stock)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Code)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Concerto.Title)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Type.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Price)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Stock)
+                                        </td>
+
+
+                                        <td>
+                                            @if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Admin") || this.User.IsInRole("Employee"))
+                                            {
+                                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><i class="far fa-edit"></i></a>
+                                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info"><i class="fas fa-list"></i></a>
+                                                
+                                            }
+
+
+                                            @if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Admin"))
+                                            {
+                                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                            }
+
+
+
+                                        </td>
+
+
+
+                                        
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </body>
+
+</html>
+
+
+
+
+
+
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#MyTable').DataTable();
+        });
+    </script>
+}
+

@@ -1,0 +1,69 @@
+﻿@model ProjetoFinalCurso.Models.TicketViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<section class="footer-first-section">
+    <div class="login" @*class="container"*@ style="position:center">
+
+
+        <div class="box-wrap">
+            <header>
+                <h1>Edit Ticket</h1>
+            </header>
+
+
+
+            <section class="quick-contact">
+                 <form asp-action="Edit" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+            
+                    <partial name="_Tickets" />
+
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <p></p>                       
+                        <a asp-action="Index" class="btn-login">Back to List</a>
+                    </div>
+                 </form>
+
+            </section>
+        </div>
+
+    </div>
+
+</section>
+
+
+  <script type="text/javascript">
+        debugger;
+        $(document).ready(function () {
+            $("#ConcertId").change(function () {
+                $("#TicketTypeId").empty();
+                $.ajax({
+                    url: '@Url.Action("GetTypesAsync","Tickets")',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { flightId: $("#ConcertId").val() },
+                    success: function (seats) {
+                        debugger;
+                        //$("#ClassId").append('<option value="0">(Select a Class...)</option>');
+                        $.each(seats, function (i, clas) {
+                            $("#TicketTypeId").append('<option value="'
+                                + clas.value + '">'
+                                + clas.text + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        debugger;
+                        alert('Failed to retrieve ticket types.' + ex);
+                    }
+                });
+                return false;
+            })
+        });
+    </script>
+
+    
+

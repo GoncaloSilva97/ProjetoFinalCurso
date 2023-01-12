@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ProjetoFinalCurso.Data.Entities.Concert>
+
+<!DOCTYPE html>
+<html>
+	<body>
+		<br />
+		<br />
+		<br />
+			<div id="page" class="site" itemscope itemtype="http://schema.org/LocalBusiness">	
+				<div class="banner">
+					<div class="owl-four owl-carousel" itemprop="image">
+						@foreach (var item in Model)
+						{
+							<img src="@Url.Content(item.ImageFullPath)" alt="Image of Bannner" style="width:896px;height:504px; left: 10.7%; position: relative;" />
+						}
+					</div>
+					<div class="container" itemprop="description">
+						@*<h1>welcome to education pro</h1>
+						<h3>With our advance search feature you can now find the trips for you...</h3>*@
+					</div>
+					<div id="owl-four-nav" class="owl-nav"></div>
+				</div>
+			</div>
+		<br />
+		<br />
+		<br />
+
+	<script type="text/javascript" src="~/lib/bootstrap/dist/js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="~/lib/bootstrap/dist/js/lightbox.js"></script>
+	<script type="text/javascript" src="~/lib/bootstrap/dist/js/all.js"></script>
+	<script type="text/javascript" src="~/lib/bootstrap/dist/js/isotope.pkgd.min.js"></script>
+	<script type="text/javascript" src="~/lib/bootstrap/dist/js/owl.carousel.js"></script>
+	<script type="text/javascript" src="~/lib/bootstrap/dist/js/jquery.flexslider.js"></script>
+	<script type="text/javascript" src="~/lib/bootstrap/dist/js/jquery.rateyo.js"></script>
+	<script type="text/javascript" src="~/lib/bootstrap/dist/js/custom.js"></script>
+	</body>
+</html>

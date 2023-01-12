@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ProjetoFinalCurso.Data.Entities.Concert>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css" />
+
+
+<br />
+
+<p>
+
+
+    @if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Admin") || this.User.IsInRole("Employee"))
+    {
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+    }
+</p>
+<div class="learn-courses">
+	<div class="container">
+		<div class="courses">
+			<div class="owl-one owl-carousel">
+
+
+				@foreach (var item in Model)
+				{
+					<div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
+						<div class="img-wrap" itemprop="image"><img src="@Url.Content(item.ImageFullPath)"  style="width:100px;height:150px;max-width:100%;height:auto" alt="courses picture"></div>
+
+
+						<a href="#" class="learn-desining-banner" itemprop="name">Learn Web Designing >>></a>
+
+
+						<div class="box-body" itemprop="description">
+						
+							<section itemprop="time">
+									<p>@Html.DisplayFor(modelItem => item.Title)</p>
+									<p><span>Date:</span> @Html.DisplayFor(modelItem => item.Day)</p>
+									<p><span>Description:</span> @Html.DisplayFor(modelItem => item.Description)</p>
+
+								<p><a class="learn-desining-banner" asp-route-id="@item.Id" itemprop="name">Edit</a></p>
+								<p><a class="learn-desining-banner" asp-route-id="@item.Id" itemprop="name">Details</a></p>
+								<p><a class="learn-desining-banner" asp-route-id="@item.Id" itemprop="name">Delete</a></p>
+							</section>
+
+
+
+						</div>
+					</div>
+				}
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+@section Scripts{
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#MyTable').DataTable();
+        });
+    </script>
+}

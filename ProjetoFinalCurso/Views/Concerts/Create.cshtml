@@ -1,0 +1,42 @@
+﻿@model ProjetoFinalCurso.Models.ConcertViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<section class="footer-first-section">
+    <div class="login" @*class="container"*@ style="position:center">
+
+
+        <div class="box-wrap">
+            <header>
+                <h1>Create Concert</h1>
+            </header>
+
+
+
+            <section class="quick-contact">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <partial name="_Concerts" />
+
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <p></p>
+                        <a asp-action="Index" class="btn-login">Back to List</a>
+                    </div>
+                </form>
+
+            </section>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

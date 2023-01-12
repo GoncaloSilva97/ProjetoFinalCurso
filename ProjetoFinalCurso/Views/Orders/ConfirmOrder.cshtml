@@ -1,0 +1,52 @@
+﻿@model ProjetoFinalCurso.Models.OrderViewModel
+
+@{
+    ViewData["Title"] = "ConfirmOrder";
+}
+<section class="footer-first-section">
+    <div class="login" @*class="container"*@ @*style="position:center"*@>
+
+
+        <div class="box-wrap">
+            <header>
+                <h1>Choose Your Payment Method</h1>
+            </header>
+
+
+
+            <section class="quick-contact">
+                <form asp-action="ConfirmOrder">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="PaymentId" class="control-label" style="font-size: 1.6rem;"></label>
+                        <select asp-for="PaymentId" asp-items="Model.Payments" class="form-control footer-first-section" style=" color: white; background-color: black; font-size: 1.4rem;border: 1px solid #fff;border-radius: 5px"></select>
+                        <span asp-validation-for="PaymentId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Complete Order" class="btn btn-primary" />
+                        <p></p>
+                        <a asp-action="Index" class="btn-login">Back to List</a>
+                    </div>
+                </form>
+
+            </section>
+        </div>
+
+    </div>
+
+</section>
+
+<div class="text-success">
+    <p>
+        @ViewBag.Message
+    </p>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }}
+

@@ -1,0 +1,48 @@
+﻿@model ProjetoFinalCurso.Data.Entities.Band
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Band</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Members)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Members)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Links)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Links)
+        </dd>
+    </dl>
+</div>
+<div class="col-md-4">
+    @if (!string.IsNullOrEmpty(Model.ImageFullPath))
+    {
+        <img src="@Url.Content(Model.ImageFullPath)" alt="Image" style="width:300px;height:450px;max-width:100%;height:auto" />
+    }
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

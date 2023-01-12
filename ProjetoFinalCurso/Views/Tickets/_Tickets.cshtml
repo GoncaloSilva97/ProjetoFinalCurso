@@ -1,0 +1,25 @@
+﻿@model ProjetoFinalCurso.Models.TicketViewModel
+
+
+<div class="form-group">
+    <label asp-for="ConcertId" class="control-label" style="font-size: 1.6rem;"></label>
+    <select asp-for="ConcertId" asp-items="Model.ListConcerts" class="form-control footer-first-section" style=" color: white; background-color: black; font-size: 1.4rem;border: 1px solid #fff;border-radius: 5px"></select>
+    <span asp-validation-for="ConcertId" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="TicketTypeId" class="control-label" style="font-size: 1.6rem;"></label>
+    <select asp-for="TicketTypeId" asp-items="Model.ListTicketTypes" class="form-control footer-first-section" style=" color: white; background-color: black; font-size: 1.4rem;border: 1px solid #fff;border-radius: 5px"></select>
+    <span asp-validation-for="TicketTypeId" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Price" class="control-label" style="font-size: 1.6rem;"></label>
+    <input asp-for="Price" class="form-control" />
+    <span asp-validation-for="Price" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Stock" class="control-label" style="font-size: 1.6rem;"></label>
+    <input asp-for="Stock" class="form-control" />
+    <span asp-validation-for="Stock" class="text-danger"></span>
+</div>

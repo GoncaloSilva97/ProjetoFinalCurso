@@ -1,0 +1,192 @@
+﻿@model ProjetoFinalCurso.Models.Login.RegisterNewUserViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+ <section class="footer-first-section">
+        <div class="login" @*class="container"*@ style="position:center">
+
+
+            <div class="box-wrap">
+                <header>
+                <h1>Register</h1>
+                </header>
+
+
+
+                <section class="quick-contact">
+
+
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly"></div>
+
+                        <div class="form-group">
+                            <label asp-for="FirstName" style="font-size: 1.6rem;">First Name</label>
+                            <input asp-for="FirstName" class="form-control" />
+                            <span asp-validation-for="FirstName" class="text-warning"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="LastName" style="font-size: 1.6rem;">Last Name</label>
+                            <input asp-for="LastName" class="form-control" />
+                            <span asp-validation-for="LastName" class="text-warning"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Username" style="font-size: 1.6rem;">Username</label>
+                            <input asp-for="Username" class="form-control" />
+                            <span asp-validation-for="Username" class="text-warning"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="ImageFile" style="font-size: 1.6rem;" class="control-label"></label>
+                            <input asp-for="ImageFile" class="form-control-image" type="file" />
+                            <span asp-validation-for="ImageFile" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Password" style="font-size: 1.6rem;">Password</label>
+                            <input asp-for="Password" type="password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-warning"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Confirm" style="font-size: 1.6rem;">Confirm</label>
+                            <input asp-for="Confirm" type="password" class="form-control" />
+                            <span asp-validation-for="Confirm" class="text-warning"></span>
+                        </div>
+
+                        @if (this.User.IsInRole("Admin"))
+                        {
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                <input class="form-check-input" asp-for="Employee" style="  margin-top: 0rem; margin-left: -12rem;" /> @Html.DisplayNameFor(model => model.Employee)
+                                </label>
+                            </div>
+
+                       
+                        }
+
+                        <div class="form-group">
+                            <input type="submit" value="Register New User" class="btn btn-primary" />
+                        </div>
+                    </form>
+
+
+
+
+                </section>
+            </div>
+
+        </div>
+
+
+
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="text-success">
+    <p>
+        @ViewBag.Message
+    </p>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    @*<h2>Register</h2>
+
+                <div class="row">
+                <div class="col-md-4 offset-md-4">
+                <form method="post">
+                <div asp-validation-summary="ModelOnly"></div>
+
+                <div class="form-group">
+                <label asp-for="FirstName">First Name</label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-warning"></span>
+                </div>
+
+                <div class="form-group">
+                <label asp-for="LastName">Last Name</label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-warning"></span>
+                </div>
+
+                <div class="form-group">
+                <label asp-for="Username">Username</label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-warning"></span>
+                </div>
+
+                <div class="form-group">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input asp-for="ImageFile" class="form-control" type="file" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                <label asp-for="Password">Password</label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-warning"></span>
+                </div>
+
+                <div class="form-group">
+                <label asp-for="Confirm">Confirm</label>
+                <input asp-for="Confirm" type="password" class="form-control" />
+                <span asp-validation-for="Confirm" class="text-warning"></span>
+                </div>
+
+                @if (this.User.IsInRole("Admin"))
+                {
+                <div class="form-group form-check">
+                <label class="form-check-label">
+                <input class="form-check-input" asp-for="Employee" /> @Html.DisplayNameFor(model => model.Employee)
+                </label>
+                </div>
+                }
+
+                <div class="form-group">
+                <input type="submit" value="Register New User" class="btn btn-primary" />
+                </div>
+                </form>
+                </div>
+                </div>*@
